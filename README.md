@@ -5,6 +5,22 @@ A complete, runnable SQL data analytics project: a normalized retail database, r
 ## Why this project
 Demonstrates database design (normalization, keys, constraints), core and advanced SQL (joins, subqueries, window functions, CTEs), and translating queries into business insight — the exact skill set for a data analyst role, and a natural pairing with Power BI dashboards.
 
+## Schema
+
+![ER Diagram](er_diagram.png)
+
+```mermaid
+erDiagram
+  STORES ||--o{ EMPLOYEES : employs
+  EMPLOYEES ||--o{ EMPLOYEES : manages
+  STORES ||--o{ ORDERS : hosts
+  CUSTOMERS ||--o{ ORDERS : places
+  EMPLOYEES ||--o{ ORDERS : handles
+  ORDERS ||--|{ ORDER_ITEMS : contains
+  PRODUCTS ||--o{ ORDER_ITEMS : "sold in"
+  CATEGORIES ||--o{ PRODUCTS : groups
+```
+
 ## Structure
 ```
 sql-retail-analytics/
